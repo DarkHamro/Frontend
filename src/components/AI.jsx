@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import aiStyle from "../css/AIModal.css"
+import "../css/AIModal.css"
 
 const AIModal = ({ isOpen, onClose }) => {
   const [prompt, setPrompt] = useState('');
