@@ -89,6 +89,7 @@ console.log(tasks);
     return (
       <div>
          <Header />
+         <div className="input-div">
          <input
          placeholder="Начни свои заметки здесь"
          value={input}
@@ -100,8 +101,10 @@ console.log(tasks);
             }
          }}
           />
-          <div className="AI">
-      <button onClick={() => setIsModalOpen(true)}>
+          
+      <button
+      className="ai-button" 
+      onClick={() => setIsModalOpen(true)}>
         ✨
       </button>
 

@@ -89,3 +89,27 @@ span::after {
     background: none;
     color: skyblue;
 }
+
+.input-container {
+  display: flex;       /* Включаем гибкий контейнер */
+  gap: 10px;           /* Расстояние между инпутом и кнопкой */
+  align-items: center; /* Выравнивание по центру по вертикали */
+  width: 100%;         /* Чтобы контейнер занимал всю ширину модалки */
+}
+
+.input-container input {
+  flex: 1;             /* Инпут растянется и займет всё свободное место */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.ai-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap; /* Чтобы текст в кнопке не переносился на вторую строку */
+}
