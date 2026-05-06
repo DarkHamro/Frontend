@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Header from "./components/Header"
-import { useState, useEffect } from "react"
+import AIModal from "./components/AI"
 
 const App = () => {
     const [tasks, setTasks] = useState([])
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false)
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
 const addTasks = async () => {
     if (!input.trim() || loading) return
@@ -99,6 +100,16 @@ console.log(tasks);
             }
          }}
           />
+          <div className="AI">
+      <button onClick={() => setIsModalOpen(true)}>
+        ✨
+      </button>
+
+      <AIModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
+    </div>
          <ul>
           {tasks.map((task) => (
     <li 
