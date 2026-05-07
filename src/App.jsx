@@ -37,7 +37,7 @@ const addTasks = async () => {
 
 const deleteTask = async (id) => {
     try {
-        await fetch(`${API_URL}/notes${id}`, {
+        await fetch(`${API_URL}/notes/${id}`, {
             method: 'DELETE'
         });
         setTasks(prev => prev.filter(t => t.id !== id));
@@ -64,7 +64,7 @@ const toggleTask = async (task) => {
     try {
         const updatedDone = task.done ? 0 : 1
 
-        await fetch(`${API_URL}/notes${task.id}`, {
+        await fetch(`${API_URL}/notes/${task.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -120,7 +120,7 @@ console.log(tasks);
   key={task.id}
   onClick={() => toggleTask(task)}
 >
-  <span className={task.done ? "done" : ""}>
+  <span className={Number(task.done) === 1 ? "done" : ""}>
     {task.text}
   </span>
 
