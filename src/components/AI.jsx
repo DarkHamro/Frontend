@@ -25,7 +25,8 @@ const AIModal = ({ isOpen, onClose }) => {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       
-      setResponse(data.content);
+      // ИСПОЛЬЗУЙ reply, так как бэкенд шлет именно его
+      setResponse(data.reply)
     } catch (err) {
       setResponse("Ошибка: " + err.message);
     } finally {

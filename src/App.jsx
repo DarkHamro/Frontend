@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import Header from "./components/Header"
 import AIModal from "./components/AI"
 
@@ -7,12 +7,13 @@ const App = () => {
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const API_URL = process.env.REACT_APP_API_URL || 'https://notes-api-production-2fc5.up.railway.app'
 
 const addTasks = async () => {
     if (!input.trim() || loading) return
     setLoading(true)
     try {
-        const res = await fetch('https://notes-api-production-2fc5.up.railway.app/notes', {
+        const res = await fetch(`${API_URL}/notes`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
@@ -36,7 +37,7 @@ const addTasks = async () => {
 
 const deleteTask = async (id) => {
     try {
-        await fetch(`https://notes-api-production-2fc5.up.railway.app/notes/${id}`, {
+        await fetch(`${API_URL}/notes${id}`, {
             method: 'DELETE'
         });
         setTasks(prev => prev.filter(t => t.id !== id));
@@ -45,25 +46,25 @@ const deleteTask = async (id) => {
     }
 };
 
-const loadTasks = async () => {
+const loadTasks = useCallback(async () => {
     try {
-        const response = await fetch('https://notes-api-production-2fc5.up.railway.app/notes');
+        const response = await fetch(`${API_URL}/notes`);
         const data = await response.json();
         setTasks(data);
     } catch (error) {
-        alert("Ошибка. Не удалось загрузить задачу");
+        alert("Ошибка. Не удалось загрузить задачи");
     }
-};
+}, [API_URL]); // Добавляем API_URL как зависимость для функции
 
 useEffect(() => {
     loadTasks();
-}, []);
+}, [loadTasks]); // Теперь можно спокойно добавить loadTasks сюда
 
 const toggleTask = async (task) => {
     try {
         const updatedDone = task.done ? 0 : 1
 
-        await fetch(`https://notes-api-production-2fc5.up.railway.app/notes/${task.id}`, {
+        await fetch(`${API_URL}/notes${task.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
