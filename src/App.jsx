@@ -99,11 +99,11 @@ console.log(tasks);
             if (e.key === "Enter") {
                 addTasks()
             }
-         }}
+         }}  
           />
-          
+            
       <button
-      className="ai-button" 
+      className="ai-button"   
       onClick={() => setIsModalOpen(true)}>
         ✨
       </button>

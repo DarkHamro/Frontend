@@ -8,4 +8,4 @@ const Header = ({ title = "Infinity" }) => {
     )
 }
 
-export default Header
+export default Header   

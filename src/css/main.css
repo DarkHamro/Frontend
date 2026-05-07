@@ -107,7 +107,7 @@ span::after {
 .ai-button {
   padding: 5px 10px;
   background-color: skyblue;
-  color: white;
+  color: white;   
   border: none;
   border-radius: 5px;
   cursor: pointer;

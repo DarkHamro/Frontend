@@ -10,11 +10,11 @@ const AIModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const handleAskAI = async () => {
-    if (!prompt.trim()) return;
+    if (!prompt.trim()) return;   
 
     setLoading(true);
     setResponse('');
-
+   
     try {
       const res = await fetch(`${API_URL}/ai`, { 
         method: 'POST',
