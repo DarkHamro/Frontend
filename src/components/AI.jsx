@@ -5,7 +5,7 @@ const AIModal = ({ isOpen, onClose }) => {
   const [prompt, setPrompt] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost';
 
   if (!isOpen) return null;
 
