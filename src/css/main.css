@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -10,13 +6,6 @@ body {
     color: skyblue;
     margin: 30px;
     padding: 50px;
-}
-
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
 }
 
 header {
@@ -32,96 +21,116 @@ header {
 
     border: 2px solid lightblue;
     border-radius: 0 0 100px 100px;
-    box-shadow: 0px 5px 3px rgb(39, 47, 49)
+    box-shadow: 0px 5px 3px rgb(39, 47, 49);
+    z-index: 100; /* Чтобы шапка всегда была сверху */
 }
 
-input {
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирует всё содержимое по горизонтали */
+    padding: 30px;
+    margin-top: 80px; /* Отступ сверху, чтобы шапка не перекрывала контент */
+}
+
+/* Главный контейнер для инпута и кнопки AI */
+.input-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    max-width: 450px; /* Жестко фиксируем ширину всей зоны ввода */
+    margin: 30px auto; /* Центрируем её на экране */
+    box-sizing: border-box;
+}
+
+/* Сам инпут внутри контейнера */
+.input-container input {
+    flex: 1; /* Занимает всё доступное место в контейнере 450px */
     background: rgb(35, 35, 35);
     border: 1px solid skyblue;
     border-radius: 5px;
     color: skyblue;
     font-size: 16px;
-}
-.input-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 450px;
-  margin: 30px auto;
-}
-.input-div input {
-  width: 100%; 
-  max-width: 100%; 
-  box-sizing: border-box; 
+    padding: 12px 16px;
+    box-sizing: border-box;
+    outline: none;
 }
 
 button {
     background: skyblue;
     color: rgb(27, 27, 27);
-    border: lightblue;
-    border-radius: 2px;
+    border: none;
+    border-radius: 5px;
     margin: 10px;
     font-size: 15px;
-
     transition: all 0.3s ease;
+    cursor: pointer;
+}
 
- &:disabled {
+button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
- &:hover {
+button:hover {
     background: rgb(192, 237, 252);
- }
-}
-
-/* Твоя крутая плавная анимация зачеркивания */
-span {
-  position: relative;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-span.done {
-  opacity: 0.5;
-}
-
-span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  height: 2px;
-  width: 0;
-  background: skyblue; /* Поменял на skyblue, чтобы линия подходила под цвет текста */
-  transition: width 0.3s ease;
-}
-
-.done::after {
-  width: 100%;
-}
-
-.input-container {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
-}
-
-.input-container input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
 .ai-button {
-  padding: 5px 10px;
-  background-color: skyblue;
-  color: white;   
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  white-space: nowrap;
+    padding: 12px 16px;
+    background-color: skyblue;
+    color: rgb(27, 27, 27);   
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Список задач */
+ul {
+    width: 100%;
+    max-width: 450px; /* Ширина один в один как у инпута */
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+/* Анимация зачеркивания */
+span {
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    white-space: normal;
+    word-break: break-word; /* Перенос длинных слов */
+    text-align: left;
+    flex-grow: 1;
+}
+
+span.done {
+    opacity: 0.5;
+}
+
+span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 2px;
+    width: 0;
+    background: skyblue; 
+    transition: width 0.3s ease;
+}
+
+.done::after {
+    width: 100%;
 }
