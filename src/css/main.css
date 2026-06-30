@@ -45,15 +45,17 @@ main {
 
 /* Сам инпут — теперь он ВСЕГДА будет железно занимать всю ширину в 450px */
 .input-div input {
-    width: 100%; 
-    background: rgb(35, 35, 35);
-    border: 1px solid skyblue;
-    border-radius: 5px;
-    color: skyblue;
-    font-size: 16px;
-    padding: 12px 16px;
-    box-sizing: border-box;
-    outline: none;
+  width: 450px !important;       /* Фиксируем ширину намертво */
+  min-width: 450px !important;   /* Запрещаем сжиматься */
+  max-width: 100% !important;    /* Защита для мобильных экранов */
+  background: rgb(35, 35, 35);
+  border: 1px solid skyblue;
+  border-radius: 5px;
+  color: skyblue;
+  font-size: 16px;
+  padding: 12px 16px;
+  box-sizing: border-box !important;
+  outline: none;
 }
 
 /* Список задач */
