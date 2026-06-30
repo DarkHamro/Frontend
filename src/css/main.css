@@ -102,7 +102,7 @@ span::after {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgb(27, 27, 27);
+    background: rgb(35, 35, 35);
     padding: 16px;
     display: flex;
     justify-content: center;
@@ -144,7 +144,7 @@ span::after {
 /* Синяя круглая кнопка отправки со стрелочкой */
 .send-btn {
     background: skyblue;
-    color: rgb(27, 27, 27);
+    color: rgb(35, 35, 35);
     border: none;
     border-radius: 50%;
     width: 36px;
@@ -159,6 +159,12 @@ span::after {
     flex-shrink: 0;
     transition: transform 0.1s ease;
 }
+
+.send.btn:hover {
+   background: rgb(146, 224, 255);
+}
+
+
 
 .send-btn:active {
     transform: scale(0.9);
