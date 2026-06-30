@@ -4,8 +4,8 @@ body {
 
     background: rgb(27, 27, 27);
     color: skyblue;
-    margin: 30px;
-    padding: 50px;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -15,38 +15,37 @@ header {
     background: skyblue;
     color: rgb(27, 27, 27);
     width: 100%;
-
     display: flex;
     justify-content: center;
-
     border: 2px solid lightblue;
     border-radius: 0 0 100px 100px;
     box-shadow: 0px 5px 3px rgb(39, 47, 49);
-    z-index: 100; /* Чтобы шапка всегда была сверху */
+    z-index: 100;
 }
 
+/* Главный контейнер, который собирает всё по центру */
 main {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Центрирует всё содержимое по горизонтали */
-    padding: 30px;
-    margin-top: 80px; /* Отступ сверху, чтобы шапка не перекрывала контент */
-}
-
-/* Главный контейнер для инпута и кнопки AI */
-.input-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
+    align-items: center; 
     width: 100%;
-    max-width: 450px; /* Жестко фиксируем ширину всей зоны ввода */
-    margin: 30px auto; /* Центрируем её на экране */
+    max-width: 450px;    /* Ограничиваем общую ширину интерфейса */
+    margin: 120px auto 30px auto; /* Центрируем на экране и делаем отступ от шапки */
+    padding: 0 20px;
     box-sizing: border-box;
 }
 
-/* Сам инпут внутри контейнера */
-.input-container input {
-    flex: 1; /* Занимает всё доступное место в контейнере 450px */
+/* Контейнер для инпута */
+.input-div {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* Сам инпут — теперь он ВСЕГДА будет железно занимать всю ширину в 450px */
+.input-div input {
+    width: 100%; 
     background: rgb(35, 35, 35);
     border: 1px solid skyblue;
     border-radius: 5px;
@@ -57,41 +56,11 @@ main {
     outline: none;
 }
 
-button {
-    background: skyblue;
-    color: rgb(27, 27, 27);
-    border: none;
-    border-radius: 5px;
-    margin: 10px;
-    font-size: 15px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-button:hover {
-    background: rgb(192, 237, 252);
-}
-
-.ai-button {
-    padding: 12px 16px;
-    background-color: skyblue;
-    color: rgb(27, 27, 27);   
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    white-space: nowrap;
-}
-
 /* Список задач */
 ul {
     width: 100%;
-    max-width: 450px; /* Ширина один в один как у инпута */
     padding: 0;
+    margin: 0;
     list-style: none;
 }
 
@@ -100,9 +69,20 @@ li {
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.05);
-    padding: 12px;
-    margin-bottom: 8px;
-    border-radius: 5px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(135, 206, 235, 0.1);
+}
+
+button {
+    background: none;
+    color: #ef4444; /* Сделаем крестик удаления красивым красным */
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 5px;
 }
 
 /* Анимация зачеркивания */
@@ -111,7 +91,7 @@ span {
     cursor: pointer;
     transition: opacity 0.3s ease;
     white-space: normal;
-    word-break: break-word; /* Перенос длинных слов */
+    word-break: break-word;
     text-align: left;
     flex-grow: 1;
 }

@@ -86,55 +86,45 @@ const toggleTask = async (task) => {
 }
 
     return (
-      <div>
+      <main>
          <Header />
+         
          <div className="input-div">
-         <input
-         placeholder="Начни свои заметки здесь"
-         value={input}
-         onChange={(e) => setInput(e.target.value)}
-         onKeyDown={(e) => {
-            
-            if (e.key === "Enter") {
-                addTasks()
-            }
-         }}  
-          />
-            
-      {/*<button
-      className="ai-button"   
-      onClick={() => setIsModalOpen(true)}>
-        ✨
-      </button>*/}
+           <input
+             placeholder="Начни свои заметки здесь"
+             value={input}
+             onChange={(e) => setInput(e.target.value)}
+             onKeyDown={(e) => {
+               if (e.key === "Enter") {
+                   addTasks()
+               }
+             }}  
+           />
 
-      <AIModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
-    </div>
+           <AIModal 
+             isOpen={isModalOpen} 
+             onClose={() => setIsModalOpen(false)} 
+           />
+         </div>
+
          <ul>
-          {tasks.map((task) => (
-    <li 
-  key={task.id}
-  onClick={() => toggleTask(task)}
->
-  <span className={Number(task.done) === 1 ? "done" : ""}>
-    {task.text}
-  </span>
-
-  <button 
-    onClick={(e) => {
-      e.stopPropagation()
-      deleteTask(task.id)
-    }}
-  >
-    &times;
-  </button>
-</li>
-))}
-            
+           {tasks.map((task) => (
+             <li key={task.id} onClick={() => toggleTask(task)}>
+               <span className={Number(task.done) === 1 ? "done" : ""}>
+                 {task.text}
+               </span>
+               <button 
+                 onClick={(e) => {
+                   e.stopPropagation()
+                   deleteTask(task.id)
+                 }}
+               >
+                 &times;
+               </button>
+             </li>
+           ))}
          </ul>
-      </div>
+      </main>
     )
     }
 
