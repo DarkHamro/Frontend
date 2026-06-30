@@ -101,11 +101,11 @@ const toggleTask = async (task) => {
          }}  
           />
             
-      <button
+      {/*<button
       className="ai-button"   
       onClick={() => setIsModalOpen(true)}>
         ✨
-      </button>
+      </button>*/}
 
       <AIModal 
         isOpen={isModalOpen} 
