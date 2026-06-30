@@ -41,6 +41,21 @@ input {
     color: skyblue;
     font-size: 16px;
 }
+.input-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 450px; 
+  margin: 30px auto; 
+  box-sizing: border-box;
+}
+
+.input-div input {
+  width: 100%; 
+  padding: 12px 16px;
+  box-sizing: border-box; 
+}
 
 button {
     background: skyblue;
