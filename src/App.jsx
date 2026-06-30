@@ -7,7 +7,7 @@ const App = () => {
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false)
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const API_URL = process.env.REACT_APP_API_URL || 'https://notes-api-production-2fc5.up.railway.app'
+    const API_URL = process.env.REACT_APP_API_URL || 'https://notes-api-6bpw.onrender.com'
 
 const addTasks = async () => {
     if (!input.trim() || loading) return
@@ -54,11 +54,11 @@ const loadTasks = useCallback(async () => {
     } catch (error) {
         alert("Ошибка. Не удалось загрузить задачи");
     }
-}, [API_URL]); // Добавляем API_URL как зависимость для функции
+}, [API_URL]); // Adding API_URL as a function dependency
 
 useEffect(() => {
     loadTasks();
-}, [loadTasks]); // Теперь можно спокойно добавить loadTasks сюда
+}, [loadTasks]); // Adding loadTasks here to connect function with useEffect
 
 const toggleTask = async (task) => {
     try {
@@ -84,8 +84,6 @@ const toggleTask = async (task) => {
     }
     
 }
-
-console.log(tasks);
 
     return (
       <div>
