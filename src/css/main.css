@@ -102,24 +102,26 @@ span::after {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgb(35, 35, 35);
-    padding: 16px;
+    background: transparent; /* Делаем всю огромную полосу полностью прозрачной */
+    padding: 20px 16px;      /* Отступы, чтобы инпут не прилипал к самому низу экрана */
     display: flex;
     justify-content: center;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    pointer-events: none;    /* Чтобы через прозрачную область можно было кликать по списку */
     z-index: 100;
 }
 
-/* Контейнер ограничивает ширину поля ввода на больших мониторах, но на мобилках сжимается */
+/* Возвращаем кликабельность самому инпуту внутри прозрачной панели */
 .chat-input-container {
     display: flex;
-    align-items: flex-end; /* Кнопка отправки прижмется к нижнему краю, если textarea станет высокой */
+    align-items: flex-end; 
     width: 100%;
     max-width: 600px;
-    background: rgb(38, 38, 38);
+    background: rgb(38, 38, 38); /* Тёмный фон остаётся ТОЛЬКО у самого закруглённого поля */
     border: 1px solid rgba(135, 206, 235, 0.3);
     border-radius: 24px;
     padding: 6px 6px 6px 16px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Добавим тень инпуту, чтобы он красиво выделялся */
+    pointer-events: auto;    /* Разрешаем клики и ввод текста */
 }
 
 /* Наша новая textarea */
