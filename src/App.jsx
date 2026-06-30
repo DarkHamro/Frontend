@@ -88,32 +88,16 @@ const toggleTask = async (task) => {
     return (
       <main>
          <Header />
-         
-         <div className="input-div">
-           <input
-             placeholder="Начни свои заметки здесь"
-             value={input}
-             onChange={(e) => setInput(e.target.value)}
-             onKeyDown={(e) => {
-               if (e.key === "Enter") {
-                   addTasks()
-               }
-             }}  
-           />
 
-           <AIModal 
-             isOpen={isModalOpen} 
-             onClose={() => setIsModalOpen(false)} 
-           />
-         </div>
-
-         <ul>
+         {/* Список задач теперь идет сверху, чтобы инпут снизу его не перекрывал */}
+         <ul className="tasks-list">
            {tasks.map((task) => (
              <li key={task.id} onClick={() => toggleTask(task)}>
                <span className={Number(task.done) === 1 ? "done" : ""}>
                  {task.text}
                </span>
                <button 
+                 className="delete-btn"
                  onClick={(e) => {
                    e.stopPropagation()
                    deleteTask(task.id)
@@ -124,6 +108,34 @@ const toggleTask = async (task) => {
              </li>
            ))}
          </ul>
+
+         {/* Закрепленная нижняя панель а-ля мессенджер */}
+         <div className="bottom-chat-bar">
+           <div className="chat-input-container">
+             <textarea
+               placeholder="Начни свои заметки здесь..."
+               value={input}
+               onChange={(e) => setInput(e.target.value)}
+               rows={1}
+               onKeyDown={(e) => {
+                 // Отправка по Ctrl + Enter или Cmd + Enter
+                 if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+                     e.preventDefault()
+                     addTasks()
+                 }
+               }}  
+             />
+             
+             <button className="send-btn" onClick={addTasks} disabled={loading}>
+               {loading ? "..." : "↑"}
+             </button>
+           </div>
+
+           <AIModal 
+             isOpen={isModalOpen} 
+             onClose={() => setIsModalOpen(false)} 
+           />
+         </div>
       </main>
     )
     }
